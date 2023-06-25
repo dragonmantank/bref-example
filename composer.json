@@ -1,0 +1,12 @@
+{
+    "require": {
+        "bref/bref": "^2.0",
+        "slim/slim": "^4.11",
+        "slim/psr7": "^1.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": false
+        }
+    }
+}
