@@ -8,8 +8,21 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $app = AppFactory::create();
 
-$app->get('/', function(RequestInterface $request, ResponseInterface $response, array $args = []) {
-    $response->getBody()->write("Hello World");
+$app->get('/', function(
+    RequestInterface $request,
+    ResponseInterface $response
+) {
+    $response->getBody()->write("This is the main route of a Slim application");
+    return $response;
+});
+
+$app->get('/hello', function(
+    RequestInterface $request,
+    ResponseInterface $response
+) {
+    parse_str($request->getUri()->getQuery(), $args);
+    $name = $args['name'] ?? 'world';
+    $response->getBody()->write("Hello {$name}");
     return $response;
 });
 $app->run();
